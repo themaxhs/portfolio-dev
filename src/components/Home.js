@@ -1,11 +1,12 @@
 import React from "react";
 import { Typography, Box, Grid, Button } from "@mui/material";
 import { styled } from "@mui/system";
+import PDF from "../assets/HESA CV 2024.pdf";
 
 const StyledTypography = styled(Typography)(({ theme }) => ({
   textAlign: "center",
   fontFamily: "Poppins, Arial, sans-serif",
-  color: "white",
+  color: "black",
   "& h6": {
     fontSize: "36px",
     fontWeight: "bold",
@@ -29,6 +30,11 @@ const StyledTypography = styled(Typography)(({ theme }) => ({
   },
 }));
 
+const StyledButtonContainer = styled(Grid)(({ theme }) => ({
+  display: "flex",
+  justifyContent: "center",
+}));
+
 const StyledButton = styled(Button)(({ theme }) => ({
   backgroundColor: "#ECB365",
   color: "white",
@@ -38,8 +44,17 @@ const StyledButton = styled(Button)(({ theme }) => ({
   "&:hover": {
     backgroundColor: "#CFAE56",
   },
-  marginTop: "20px", // Ajusta la distancia entre el texto y el botón aquí
+  marginTop: "20px",
 }));
+
+const handleDownloadCV = () => {
+  // Crear un enlace temporal
+  const link = document.createElement("a");
+  link.href = PDF;
+  link.target = "_blank";
+  link.download = "HESA CV 2023.pdf";
+  link.click();
+};
 
 const Home = () => {
   return (
@@ -48,23 +63,31 @@ const Home = () => {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: "#1B1A17",
+        backgroundColor: "white",
         padding: "40px",
-        height: "100vh", // Ajusta la altura del contenedor aquí
+        minHeight: "100vh",
       }}
     >
-      <StyledTypography variant="body1" component="div">
-        <Typography variant="h6" style={{ whiteSpace: "nowrap" }}>
-          Hey👋, I'm <span className="name">Alberto Hermosillo</span>
-        </Typography>
-        <Typography variant="body2">
-          A Frontend focused Web Developer building the Frontend of Websites and
-          Web Applications that leads to the success of the overall product
-        </Typography>
-        <StyledButton variant="contained" size="large">
-          Projects
-        </StyledButton>
-      </StyledTypography>
+      <Grid container spacing={2} justifyContent="center" alignItems="center">
+        <Grid item xs={12}>
+          <StyledTypography variant="body1" component="div">
+            <Typography variant="h6" style={{ whiteSpace: "nowrap" }}>
+              Hey👋, I'm <span className="name">Alberto Hermosillo</span>
+            </Typography>
+            <Typography variant="body2">
+              A Frontend focused Web Developer building the Frontend of Websites and
+              Web Applications that leads to the success of the overall product
+            </Typography>
+          </StyledTypography>
+        </Grid>
+        <Grid item xs={12}>
+          <StyledButtonContainer>
+            <StyledButton variant="contained" size="large" onClick={handleDownloadCV}>
+              Download CV
+            </StyledButton>
+          </StyledButtonContainer>
+        </Grid>
+      </Grid>
     </Box>
   );
 };

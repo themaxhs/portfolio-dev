@@ -7,13 +7,13 @@ const StyledBox = styled(Box)({
   alignItems: "center",
   justifyContent: "center",
   height: "100vh",
-  backgroundColor: "#1B1A17",
+  backgroundColor: "#FFFFFF", // Cambié el color de fondo a blanco
 });
 
 const StyledTypography = styled(Typography)(({ theme }) => ({
   textAlign: "center",
   fontFamily: "Poppins, Arial, sans-serif",
-  color: "white",
+  color: "#000000", // Cambié el color de texto a negro
   "& h6": {
     fontSize: "36px",
     fontWeight: "bold",
